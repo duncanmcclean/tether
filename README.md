@@ -2,7 +2,7 @@
 
 Link local composer packages to your sandbox for local development.
 
-> > [!NOTE]
+> [!NOTE]
 > Still in active development. Things may change without notice.
 
 ## Rationale
