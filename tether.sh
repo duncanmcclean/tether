@@ -43,6 +43,21 @@ gum style \
 # Symlink assets
 # ------------------------------------------------------------------------------
 
+duncanmcclean_statamic_cargo() {
+    if [ -d "public" ]; then
+        rm -rf public/vendor/statamic-cargo
+        ln -s $PACKAGE_PATH/resources/dist public/vendor/statamic-cargo
+    fi
+
+    if [ -d "resources/views/checkout" ]; then
+        rm -rf resources/views/checkout
+        ln -s $PACKAGE_PATH/resources/views/checkout resources/views/checkout
+
+        rm -rf public/checkout-build
+        ln -s $PACKAGE_PATH/resources/dist-checkout public/checkout-build
+    fi
+}
+
 statamic_cms() {    
     if [ -d "public" ]; then
         rm -rf public/vendor/statamic
