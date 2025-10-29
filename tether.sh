@@ -24,7 +24,8 @@ if [[ " $* " == *" --force "* ]]; then
     gum style \
         --foreground 29 --border-foreground 29 --border double \
         --align center --width 50 --margin "1 1" \
-        '✅ Forcefully symlinked package' 'To untether, run `composer reinstall ...`'
+        '✅ Forcefully symlinked package' \
+        'To untether, run `composer reinstall ...`'
 else
   composer config repositories.$PACKAGE_NAME path $PACKAGE_PATH
 
