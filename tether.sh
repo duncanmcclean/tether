@@ -22,7 +22,7 @@ if [[ " $* " == *" --force "* ]]; then
     ln -s $PACKAGE_PATH vendor/$PACKAGE_VENDOR/$PACKAGE_NAME
 
     gum style \
-        --foreground 46 --border-foreground 46 --border double \
+        --foreground 29 --border-foreground 29 --border double \
         --align center --width 50 --margin "1 1" \
         '✅ Forcefully symlinked package' 'To untether, run `composer reinstall ...`'
 else
@@ -43,7 +43,7 @@ else
     composer require "$PACKAGE_VENDOR/$PACKAGE_NAME $constraint as $tag" -w --no-interaction "$@" || exit 1
 
     gum style \
-        --foreground 46 --border-foreground 46 --border double \
+        --foreground 29 --border-foreground 29 --border double \
         --align center --width 50 --margin "1 1" \
         '✅ Updated composer constraint'
 fi
@@ -92,7 +92,7 @@ if declare -f "$HANDLER_NAME" > /dev/null; then
     $HANDLER_NAME
 
     gum style \
-        --foreground 46 --border-foreground 46 --border double \
+        --foreground 29 --border-foreground 29 --border double \
         --align center --width 50 --margin "1 1" \
         '✅ Symlinked assets'
 elif [[ -d "public" ]]; then
@@ -105,7 +105,7 @@ elif [[ -d "public" ]]; then
     fi
 
     gum style \
-        --foreground 46 --border-foreground 46 --border double \
+        --foreground 29 --border-foreground 29 --border double \
         --align center --width 50 --margin "1 1" \
         '✅ Symlinked assets'
 fi
