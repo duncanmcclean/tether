@@ -17,26 +17,36 @@ rm /tmp/tether.txt
 # Set up repository & update constraint
 # ------------------------------------------------------------------------------
 
-composer config repositories.$PACKAGE_NAME path $PACKAGE_PATH
+if [[ " $* " == *" --force "* ]]; then
+    rm -rf vendor/$PACKAGE_VENDOR/$PACKAGE_NAME
+    ln -s $PACKAGE_PATH vendor/$PACKAGE_VENDOR/$PACKAGE_NAME
 
-tag=$(cd $PACKAGE_PATH && git describe --tags --abbrev=0)
-tag=${tag#v}
-branch=$(cd $PACKAGE_PATH && git rev-parse --abbrev-ref HEAD)
-
-if [[ $branch =~ ^[0-9]+\.[0-9]+$ ]]; then
-    constraint="$branch.x-dev"
-elif [[ $branch =~ ^[0-9]+\.x+$ ]]; then
-    constraint="$branch-dev"
+    gum style \
+        --foreground 46 --border-foreground 46 --border double \
+        --align center --width 50 --margin "1 1" \
+        '✅ Forcefully symlinked package' 'To untether, run `composer reinstall ...`'
 else
-    constraint="dev-$branch"
+  composer config repositories.$PACKAGE_NAME path $PACKAGE_PATH
+
+    tag=$(cd $PACKAGE_PATH && git describe --tags --abbrev=0)
+    tag=${tag#v}
+    branch=$(cd $PACKAGE_PATH && git rev-parse --abbrev-ref HEAD)
+
+    if [[ $branch =~ ^[0-9]+\.[0-9]+$ ]]; then
+        constraint="$branch.x-dev"
+    elif [[ $branch =~ ^[0-9]+\.x+$ ]]; then
+        constraint="$branch-dev"
+    else
+        constraint="dev-$branch"
+    fi
+
+    composer require "$PACKAGE_VENDOR/$PACKAGE_NAME $constraint as $tag" -w --no-interaction "$@" || exit 1
+
+    gum style \
+        --foreground 46 --border-foreground 46 --border double \
+        --align center --width 50 --margin "1 1" \
+        '✅ Updated composer constraint'
 fi
-
-composer require "$PACKAGE_VENDOR/$PACKAGE_NAME $constraint as $tag" -w --no-interaction "$@" || exit 1
-
-gum style \
-    --foreground 46 --border-foreground 46 --border double \
-    --align center --width 50 --margin "1 1" \
-    '✅ Updated composer constraint'
 
 
 # ------------------------------------------------------------------------------
