@@ -44,10 +44,6 @@ If you're running into conflicts when linking a package, you may use the `--forc
 
 Although, be careful as running `composer install` in your app may destroy the symlink.
 
-## Roadmap
-
-* [ ] Ability to `untether` packages (eg. unlink them and use the _normal_ version)
-
 ## Contributing
 
 1. Fork the repository
