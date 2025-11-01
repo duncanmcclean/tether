@@ -30,7 +30,7 @@ To link a local composer package, clone it into your `~/Code`, `~/Herd` or `~/Va
 
 Then, in your sandbox app, run `tether` and select the package you wish to link. Tether will setup a Composer repository and symlink the relevant assets.
 
-<video src="demo.mp4" controls></video>
+<video src="./demo.mp4" controls></video>
 
 You may also pass the package name to the command, like this:
 
