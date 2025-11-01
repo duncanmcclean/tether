@@ -37,7 +37,6 @@ TODO
 ## Roadmap
 
 * [ ] Proper install & usage docs
-* [ ] Re-write purely in Bash
 * [ ] Ability to `untether` packages (eg. unlink them and use the _normal_ version)
 
 ## Contributing

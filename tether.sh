@@ -6,14 +6,15 @@ set -e
 # Ensure dependencies are installed
 # ------------------------------------------------------------------------------
 
-# TODO: jv check
+if ! command -v jq &> /dev/null; then
+    echo "❌ Error: jq is required but not installed"
+    echo "Install it with: brew install jq"
+    exit 1
+fi
 
 if ! command -v gum &> /dev/null; then
-    gum style --foreground 196 --border-foreground 196 --border double \
-        --align center --width 60 --margin "1 1" \
-        '❌ gum is required to use Tether' \
-        'Install it via "brew install gum"'
-
+    echo "❌ Error: gum is required to use Tether"
+    echo "Install it with: brew install gum"
     exit 1
 fi
 
