@@ -139,9 +139,6 @@ PACKAGE_PATH=$(echo "$PROJECT_LINE" | cut -d'|' -f1)
 PACKAGE_VENDOR=$(echo "$PROJECT_LINE" | cut -d'|' -f2)
 PACKAGE_NAME=$(echo "$PROJECT_LINE" | cut -d'|' -f3)
 
-gum style --foreground 33 "📦 Selected: $PACKAGE_VENDOR/$PACKAGE_NAME"
-gum style --foreground 240 "📁 Project directory: $PACKAGE_PATH"
-
 
 # ------------------------------------------------------------------------------
 # Set up repository & update constraint
