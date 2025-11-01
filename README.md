@@ -2,9 +2,6 @@
 
 Link local composer packages to your sandbox for local development.
 
-> [!NOTE]
-> Still in active development. Things may change without notice.
-
 ## Rationale
 
 It's easy to setup a composer repository for local package development. 
@@ -15,28 +12,40 @@ This package (if you can even call it that) discovers which packages you have cl
 
 ## Installation
 
-TODO
-
-<!-- 1. MacOS
-2. PHP & Composer
-3. Download `tether.sh` and copy it to `/usr/local/bin`. Remove the `.sh` file extension.
-4. Ensure it has the right permissions:
-    ```bash
+1. Use macOS
+2. Install [Gum](https://github.com/charmbracelet/gum) & [jq](https://github.com/jqlang/jq)
+3. Download `tether.sh` into your `/usr/local/bin` directory and give it the relevant permissions:
+    ```
+    curl -o /usr/local/bin/tether https://raw.githubusercontent.com/user/repo/main/tether.sh
     sudo chmod +x /usr/local/bin/tether
     ```
-5. Add `/usr/local/bin` to your `PATH` if you haven't already:
+4. Add `/usr/local/bin` to your `PATH` if you haven't already:
     ```bash
     export PATH=/usr/local/bin:$PATH
     ```
-6. Run `tether` -->
 
 ## Usage
 
-TODO
+To link a local composer package, clone it into your `~/Code`, `~/Herd` or `~/Valet` directory. 
+
+Then, in your sandbox app, run `tether` and select the package you wish to link. Tether will setup a Composer repository and symlink the relevant assets.
+
+![Short video demo of Tether](demo.mp4)
+
+You may also pass the package name to the command, like this:
+
+```sh
+tether statamic/cms
+```
+
+### Dependency conflicts
+
+If you're running into conflicts when linking a package, you may use the `--force` flag to bypass the Composer repository/install process and symlink the package's `vendor` directory directly. 
+
+Although, be careful as running `composer install` in your app may destroy the symlink.
 
 ## Roadmap
 
-* [ ] Proper install & usage docs
 * [ ] Ability to `untether` packages (eg. unlink them and use the _normal_ version)
 
 ## Contributing
