@@ -16,7 +16,7 @@ This package (if you can even call it that) discovers which packages you have cl
 2. Install [Gum](https://github.com/charmbracelet/gum) & [jq](https://github.com/jqlang/jq)
 3. Download `tether.sh` into your `/usr/local/bin` directory and give it the relevant permissions:
     ```
-    curl -o /usr/local/bin/tether https://raw.githubusercontent.com/user/repo/main/tether.sh
+    curl -o /usr/local/bin/tether https://raw.githubusercontent.com/duncanmcclean/tether/main/tether.sh
     sudo chmod +x /usr/local/bin/tether
     ```
 4. Add `/usr/local/bin` to your `PATH` if you haven't already:
