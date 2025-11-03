@@ -120,10 +120,14 @@ if [[ -n "$PACKAGE" ]]; then
     fi
 else
     while IFS='|' read -r project_dir vendor_name package_only package_name; do
-        echo "$package_name" >> "$TEMP_OPTIONS"
+        # Format with styled path using gum style for the dim effect
+        # Use relative path from CODE_DIRECTORY for cleaner display
+        relative_path="${project_dir#$CODE_DIRECTORY/}"
+        styled_path=$(echo "($relative_path)" | gum style --foreground 8)
+        echo "$package_name $styled_path" >> "$TEMP_OPTIONS"
     done < "$TEMP_PROJECTS"
     
-    SELECTED_PACKAGE=$(gum filter --placeholder "Which package do you want to link?" < "$TEMP_OPTIONS")
+    SELECTED_PACKAGE=$(gum filter --no-strip-ansi --placeholder "Which package do you want to link?" < "$TEMP_OPTIONS")
     
     if [[ -z "$SELECTED_PACKAGE" ]]; then
         gum style --foreground 208 --border-foreground 208 --border double \ 
@@ -133,7 +137,9 @@ else
         exit 1
     fi
     
-    PROJECT_LINE=$(grep "|$SELECTED_PACKAGE$" "$TEMP_PROJECTS")
+    # Extract package name from the selection (remove styled path part in parentheses)
+    PACKAGE_NAME_ONLY=$(echo "$SELECTED_PACKAGE" | sed 's/ (.*)$//' | sed 's/\x1b\[[0-9;]*m//g')
+    PROJECT_LINE=$(grep "|$PACKAGE_NAME_ONLY$" "$TEMP_PROJECTS")
 fi
 
 PACKAGE_PATH=$(echo "$PROJECT_LINE" | cut -d'|' -f1)
