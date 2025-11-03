@@ -26,7 +26,7 @@ fi
 PACKAGE="$1"
 
 CODE_DIRECTORY=""
-for dir in "$HOME/Code" "$HOME/Herd" "$HOME/Valet"; do
+for dir in "$HOME/Code" "$HOME/Herd" "$HOME/Valet" "$HOME/Sites"; do
     if [[ -d "$dir" ]]; then
         CODE_DIRECTORY="$dir"
         break
