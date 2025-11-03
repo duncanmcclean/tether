@@ -99,7 +99,7 @@ if [[ ! -s "$TEMP_PROJECTS" ]]; then
     gum style \
         --foreground 196 --border-foreground 196 --border double \
         --align center --width 60 --margin "1 1" \
-        '❌ No linkable packages found in $CODE_DIRECTORY' \
+        "❌ No linkable packages found in $CODE_DIRECTORY" \
         'Make sure your packages are in subdirectories and have composer.json files'
 
     exit 1
