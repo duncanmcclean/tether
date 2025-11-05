@@ -207,11 +207,11 @@ statamic_cms() {
     if [ -d "public" ]; then
         rm -rf public/vendor/statamic
         mkdir -p public/vendor/statamic
-    fi
 
-    ln -s "$PACKAGE_PATH/resources/dist" public/vendor/statamic/cp
-    ln -s "$PACKAGE_PATH/resources/dist-dev" public/vendor/statamic/cp-dev
-    ln -s "$PACKAGE_PATH/resources/dist-frontend" public/vendor/statamic/frontend
+        ln -s "$PACKAGE_PATH/resources/dist" public/vendor/statamic/cp
+        ln -s "$PACKAGE_PATH/resources/dist-dev" public/vendor/statamic/cp-dev
+        ln -s "$PACKAGE_PATH/resources/dist-frontend" public/vendor/statamic/frontend
+    fi
 
     rm -rf "$PACKAGE_PATH/resources/dist-package"
     ln -s "$PACKAGE_PATH/packages/cms" "$PACKAGE_PATH/resources/dist-package"
