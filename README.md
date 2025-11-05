@@ -26,7 +26,7 @@ This package (if you can even call it that) discovers which packages you have cl
 
 ## Usage
 
-To link a local composer package, clone it into your `~/Code`, `~/Herd` or `~/Valet` directory. 
+To link a local composer package, clone it into your `~/Code`, `~/Sites`, `~/Projects`, `~/Herd` or `~/Valet` directory. 
 
 Then, in your sandbox app, run `tether` and select the package you wish to link. Tether will setup a Composer repository and symlink the relevant assets.
 
