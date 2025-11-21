@@ -217,7 +217,7 @@ statamic_cms() {
     ln -s "$PACKAGE_PATH/packages/cms" "$PACKAGE_PATH/resources/dist-package"
 
     rm -f "$PACKAGE_PATH/packages/cms/src/ui.css"
-    ln -s "$PACKAGE_PATH/packages/ui/src/ui.css" "$PACKAGE_PATH/packages/cms/src/ui.css"
+    ln -s "$PACKAGE_PATH/resources/css/ui.css" "$PACKAGE_PATH/packages/cms/src/ui.css"
 }
 
 HANDLER_NAME="${PACKAGE_VENDOR}_${PACKAGE_NAME}"
